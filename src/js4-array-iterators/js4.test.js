@@ -267,7 +267,7 @@ xdescribe("Testing formatString()", () => {
   });
 });
 
-describe("Testing fizzBuzz()", () => {
+xdescribe("Testing fizzBuzz()", () => {
   const cleanArray = Array(50)
     .fill(0)
     .map((_, index) => index + 1);

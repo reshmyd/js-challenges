@@ -16,9 +16,8 @@
  * @param {string} lastName Smith
  * @returns {string} John Smith
  */
-export const createFullName = (firstName, lastName) => {
-  /* Write your code here */
-};
+export const createFullName = (firstName, lastName) => firstName + " " + lastName
+
 
 /**
  * A function that takes two numbers as an input and returns the smallest one.
@@ -28,9 +27,8 @@ export const createFullName = (firstName, lastName) => {
  * @param {number} number2 200
  * @returns {number} 100
  */
-export const findSmallestNumber = (/* Write the parameters here */) => {
-  /* Write your code here */
-};
+export const findSmallestNumber = (number1, number2) => number1<= number2 ? number1 : number2
+
 
 /**
  * A function that takes two numbers as input, multiplies them together and returns the product.
@@ -40,9 +38,8 @@ export const findSmallestNumber = (/* Write the parameters here */) => {
  * @param {number} number2 6
  * @returns {number} 18
  */
-export const multiplyNumbers = (/* Write the parameters here */) => {
-  /* Write your code here */
-};
+export const multiplyNumbers = (number1, number2) => number1 * number2
+  
 
 /* Intermediate Challenges */
 
@@ -58,6 +55,16 @@ export const multiplyNumbers = (/* Write the parameters here */) => {
  */
 export const checkIfNewHighScore = (score, highScore) => {
   /* Write your code here */
+  let output
+  if(score>highScore){
+    output = "You got a new high score!"
+  }else if (score === highScore){
+    output = "So close!"
+  }else {
+    output = "Better luck next time!"
+  }
+  return output
+  
 };
 
 /**
@@ -66,9 +73,12 @@ export const checkIfNewHighScore = (score, highScore) => {
  * @param {number} tempInCelsius 15
  * @returns {string} "15 degrees celsius is 59 degrees fahrenheit"
  */
-export const celsiusToFahrenheit = (tempInCelsius) => {
+export const celsiusToFahrenheit = (tempInCelsius) =>{
+  let f = (tempInCelsius * 9/5) + 32
+  return tempInCelsius + ` degrees celsius is ${f} degrees fahrenheit`;
+}
   /* Write your code here */
-};
+;
 
 /**
  * A function that calculates the numebr of snickers needed for the rest of your life based on the number you eat per day,
@@ -79,9 +89,9 @@ export const celsiusToFahrenheit = (tempInCelsius) => {
  * @param {number} maxAge 90
  * @returns {number} 47450
  */
-export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
+export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => (maxAge - age) * snickersPerDay * 365
   /* Write your code here */
-};
+
 
 /* Advanced Challenges */
 
@@ -100,7 +110,29 @@ export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
  * @returns {string} A - F | Score unavailable
  */
 export const getGrade = (score) => {
+
   /* Write your code here */
+  let grade;
+  if(typeof(score)==='number'){
+  if(score>=80 && score<=100){
+      grade = "A"
+    }else if (score>=70 && score<80){
+      grade = "B"
+    }else if(score>=60 && score<70){
+      grade = "C"
+    }else if (score>=50 && score<60){
+      grade = "D"
+    }else if (score>=40 && score<50){
+      grade = "E"
+    }else if (score>=0 && score<40){
+      grade = "F"
+    }else {
+      grade = "Score unavailable"
+    } 
+  }else {
+    grade = "Score unavailable"
+  }
+  return grade
 };
 
 /**
@@ -109,9 +141,8 @@ export const getGrade = (score) => {
  * @param {number} radius 3
  * @returns {number} 28.27
  */
-export const calculateAreaOfCirlce = (radius) => {
-  /* Write your code here */
-};
+export const calculateAreaOfCirlce = (radius) => Math.round(Math.PI * 100 * radius * radius )/100
+  /* Write your code here */;
 
 /* Expert Challenge */
 
@@ -132,4 +163,31 @@ export const calculateAreaOfCirlce = (radius) => {
  */
 export const getStudentSummary = (score, name) => {
   /* Write your code here */
+  let output;
+  let grade = getGrade(score)
+  switch(grade){
+    case 'A':
+      output = `Congratulations ${name}! You achieved a grade of A.`
+      break;
+    case 'B':
+        output = `Well done ${name}! You achieved a grade of B.`
+        break; 
+    case 'C':
+      output = `Nicely done ${name}! You achieved a grade of C.`
+      break;   
+    case 'D':
+      output = `That's okay ${name}. You achieved a grade of D.`
+      break;  
+    case 'E':
+      output = `Too bad ${name}. You achieved a grade of E.`
+      break;  
+    case 'F':
+      output = `Sorry ${name}. You achieved a grade of F. There's always next year.`
+      break; 
+    default:
+      output = `My apologies ${name}, there's been an error in processing your grade.`
+      break;   
+
+  }
+  return output
 };

@@ -21,9 +21,7 @@
  * @return {string} "Bacon+Lettuce+Tomato"
  */
 
-export const createRecipeString = (ingredientsArr) => {
-  return;
-};
+export const createRecipeString = (ingredientsArr) => ingredientsArr.join('+')
 
 /**
  * A function that takes Array of Items and returns a NEW ARRAY with the first and last item in it.
@@ -33,7 +31,10 @@ export const createRecipeString = (ingredientsArr) => {
  */
 
 export const getFirstAndLastItems = (itemsArr) => {
-  return;
+  let newArr = []
+  newArr[0] = itemsArr[0]
+  newArr[1] = itemsArr[itemsArr.length-1]
+  return newArr
 };
 
 /**
@@ -44,7 +45,11 @@ export const getFirstAndLastItems = (itemsArr) => {
  */
 
 export const totalScores = (scoreArr) => {
-  return;
+  let total = 0
+  for(let i=0; i<scoreArr.length ; i++){
+  total += scoreArr[i]
+  }
+  return total;
 };
 
 /**
@@ -60,7 +65,11 @@ export const totalScores = (scoreArr) => {
  */
 
 export const totalRange = (rangeMax) => {
-  return;
+  let total = 0;
+  for(let i=0; i<=rangeMax; i++){
+    total += i;
+  }
+  return total;
 };
 
 /**
@@ -71,7 +80,14 @@ export const totalRange = (rangeMax) => {
  */
 
 export const moveFirstAndLastItems = (itemsArr) => {
-  return;
+  let newArr = []
+  newArr[0] = itemsArr[itemsArr.length-1];
+ 
+  for(let i=0; i<itemsArr.length-1; i++){
+    newArr[i+1]=itemsArr[i]
+    
+  }
+  return newArr;
 };
 
 /**
@@ -89,7 +105,15 @@ export const moveFirstAndLastItems = (itemsArr) => {
  */
 
 export const removeEvenNumbers = (numberArr) => {
-  return;
+  let newArr = [];
+  let j=0;
+  for(let i=0; i<numberArr.length; i++){
+    if(numberArr[i]%2 === 1){
+      newArr[j] = numberArr[i]
+      j++
+    }
+  }
+  return newArr
 };
 
 /**
@@ -105,7 +129,14 @@ export const removeEvenNumbers = (numberArr) => {
  */
 
 export const generateAverage = (numberArr) => {
-  return;
+  let avg = 0;
+  if(numberArr.length !== 0){
+  for(let i=0; i<numberArr.length; i++){
+    avg += numberArr[i]
+  }}else{
+    return avg;
+  }
+  return Math.round(avg/numberArr.length)
 };
 
 /**
@@ -116,7 +147,13 @@ export const generateAverage = (numberArr) => {
  */
 
 export const reverseOrder = (toReverseArr) => {
-  return;
+  let newArr = [];
+  let j = toReverseArr.length -1;
+  for(let i=0; i<toReverseArr.length; i++){
+    newArr[j] = toReverseArr[i]
+    j--
+  }
+  return newArr
 };
 
 /**
@@ -138,7 +175,15 @@ export const reverseOrder = (toReverseArr) => {
  */
 
 export const generateHighscores = (playersArr, scoresArr) => {
-  return;
+  let newArr = []
+if(playersArr.length === scoresArr.length && playersArr.length !== 0){
+  for(let i=0; i<playersArr.length; i++){
+  newArr[i] = `P:${i+1} ${playersArr[i]} scored ${scoresArr[i]}`
+  }
+}else {
+  return "invalid inputs";
+}
+return newArr;
 };
 
 /**
@@ -168,5 +213,16 @@ export const generateHighscores = (playersArr, scoresArr) => {
 // };
 
 export const encryptString = (toEncrypt) => {
-  return;
+  const pivot = [[], [], []];
+  for (let i = 0; i < toEncrypt.length; i++) {
+    pivot[i % 3].push(toEncrypt[i]);
+  }
+  let str = "";
+  for (let i = 0; i < pivot.length; i++) {
+    for (let j = 0; j < pivot[i].length; j++) {
+      str += pivot[i][j];
+    }
+  }
+  return str;
 };
+  

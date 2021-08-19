@@ -18,9 +18,7 @@
 const firstName = "John";
 const lastName = "Smith";
 
-export const createFullName = () => {
-  // Write your code here
-};
+export const createFullName = () => firstName + " " + lastName
 
 /**
  * A function that programmatically returns the largest number.
@@ -31,9 +29,8 @@ export const createFullName = () => {
 const largeNumber1 = 100;
 const largeNumber2 = 200;
 
-export const findLargestNumber = () => {
-  // Write your code here
-};
+export const findLargestNumber = () => largeNumber1 > largeNumber2 ? largeNumber1 : largeNumber2
+
 
 /**
  * A function that programmatically adds two numbers together.
@@ -44,9 +41,10 @@ export const findLargestNumber = () => {
 const addNumber1 = 12;
 const addNumber2 = 24;
 
-export const addNumbers = () => {
+export const addNumbers = () => addNumber1 + addNumber2
   // Write your code here
-};
+  
+
 
 /* Intermediate Challenges */
 
@@ -58,9 +56,8 @@ export const addNumbers = () => {
  */
 const password = "thisIsMyVeryLongPassword123456789";
 
-export const findLengthOfPassword = () => {
-  // Write your code here
-};
+export const findLengthOfPassword = () => password.length
+
 
 /**
  * A function that programmatically tells you what the type of the variable is.
@@ -76,6 +73,17 @@ const thing = "I am a thing";
 
 export const findType = () => {
   // Write your code here
+  const things = typeof (thing)
+  if (things === "string") {
+    return "This is a string";
+  } else if (things === "number") {
+    return "This is a number";
+  } else if (things === "boolean") {
+    return "This is a boolean";
+  } else {
+    return "I don't know what this thing is";
+  }
+
 };
 
 /**
@@ -88,6 +96,11 @@ export const findType = () => {
 const nameTagOption = "Timothy";
 
 export const getIsValidOnNameTag = () => {
+  if(nameTagOption.length<=8 && (nameTagOption[0] === nameTagOption[0].toUpperCase())){
+    return true
+  }else{
+    return false
+  }
   // Write your code here
 };
 
@@ -103,6 +116,7 @@ const stringToConvert = "14.45";
 
 export const convertStringToNumber = () => {
   // Write your code here
+  return Number(stringToConvert)
 };
 
 /**
@@ -116,7 +130,9 @@ export const convertStringToNumber = () => {
 const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
 
 export const getHasUppercaseLetters = () => {
+
   // Write your code here
+  return /[A-Z]/.test(stringWithUppercaseLetters)
 };
 
 /* Expert Challenge */
@@ -131,4 +147,19 @@ const pascalCaseVariableName = "IWantToBeSnakeCase";
 
 export const convertPascalCaseToSnakeCase = () => {
   // Write your code here
+  let snake_case = [];
+let j=1
+
+snake_case[0] = pascalCaseVariableName[0].toLowerCase()
+  for(let i=1; i<pascalCaseVariableName.length; i++){
+    if(pascalCaseVariableName[i] === pascalCaseVariableName[i].toUpperCase()){
+      snake_case[j] = "_"
+      j++
+      snake_case[j] = pascalCaseVariableName[i].toLowerCase()
+      j++
+    }else {
+      snake_case[j] = pascalCaseVariableName[i]
+      j++
+    }}
+  return snake_case.join("")
 };
